@@ -4,9 +4,23 @@
 
 def finder(files, queries):
     """
-    YOUR CODE HERE
+    Given list of file paths and queries, return list of paths to queries
     """
-    # Your code here
+    # Init dict with queries keyed
+    # For each query, search appropriately-sized slices of file strings for matches
+    # If match, add file path to dict as list value
+
+    file_dict = {j: [] for j in queries}
+
+    for q in queries:
+        for f in files:
+            if q == f[len(q)*-1:]:
+                file_dict[q].append(f)
+    
+    result = []
+    for q in queries:
+        for path in file_dict[q]:
+            result.append(path)
 
     return result
 
